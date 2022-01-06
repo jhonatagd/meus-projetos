@@ -15,7 +15,9 @@ func main() {
 
 	contaDoJp := ContaCorrente{"Jp", 222, 111222, 200}
 	contaDoDiegao := ContaCorrente{"Diegao", 222, 111222, 200}
+	contaDoAudi := ContaCorrente{"Audi", 222, 111222, 200}
+	contaDoGustavo := ContaCorrente{"Diegao", 222, 111222, 200}
 
-	fmt.Println(fmt.Sprintf("%v %v %v", contaDoMarquito, contaDoJp, contaDoDiegao))
+	fmt.Println(fmt.Sprintf("%v %v %v %v %v", contaDoMarquito, contaDoJp, contaDoDiegao, contaDoAudi, contaDoGustavo))
 
 }
