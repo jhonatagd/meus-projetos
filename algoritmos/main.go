@@ -9,23 +9,23 @@ type Carro struct {
 
 func main() {
 	var carros = []Carro{
-		Carro{
+		{
 			Nome:  "Lamborghini",
 			Valor: 500000,
 		},
-		Carro{
+		{
 			Nome:  "Jipe",
 			Valor: 46000,
 		},
-		Carro{
+		{
 			Nome:  "Brasilia",
 			Valor: 16000,
 		},
-		Carro{
+		{
 			Nome:  "Smart",
 			Valor: 46000,
 		},
-		Carro{
+		{
 			Nome:  "Fusca",
 			Valor: 17000,
 		},
@@ -34,7 +34,10 @@ func main() {
 	fmt.Println(fmt.Sprintf("%v", carros))
 
 	carros = OrdernarPorValorDoMaisCaroParaOMaisBarato(carros)
-	fmt.Println(fmt.Sprintf("%v", carros))
+	fmt.Println(fmt.Sprintf("OrdernarPorValorDoMaisCaroParaOMaisBarato - %v", carros))
+
+	carros = OrdernarPorValorDoMaisBaratoParaOMaisCaro(carros)
+	fmt.Println(fmt.Sprintf("OrdernarPorValorDoMaisBaratoParaOMaisCaro - %v", carros))
 }
 
 func OrdernarPorValorDoMaisCaroParaOMaisBarato(carros []Carro) []Carro {
@@ -68,7 +71,29 @@ func OrdernarPorValorDoMaisCaroParaOMaisBarato(carros []Carro) []Carro {
 }
 
 func OrdernarPorValorDoMaisBaratoParaOMaisCaro(carros []Carro) []Carro {
-	//Coloque aqui seu codigo
+	for i := 0; i < len(carros); i++ {
+		var carroMaisBarato Carro
+		var indiceJ int = i
+
+		carroMaisBarato = carros[i]
+
+		for j := i; j < len(carros); j++ {
+			if carroMaisBarato.Nome == carros[j].Nome {
+				continue
+			} else {
+				if carroMaisBarato.Valor > carros[j].Valor {
+					carroMaisBarato = carros[j]
+					indiceJ = j
+				}
+			}
+		}
+
+		if carroMaisBarato.Nome != carros[i].Nome {
+			carros[indiceJ] = carros[i]
+			carros[i] = carroMaisBarato
+		}
+	}
+
 	return carros
 }
 
