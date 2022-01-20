@@ -1,61 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-type carta struct {
-	Nome  string
-	Valor int
-}
+	"example.com/greetings/Cartas/funcoes"
+	"example.com/greetings/Cartas/structs"
+)
 
 func main() {
-	var cartas = []carta{
-		{
-			Nome:  "Espadas",
-			Valor: 3,
-		},
-		{
-			Nome:  "Paus",
-			Valor: 5,
-		},
-		{
-			Nome:  "Copas",
-			Valor: 6,
-		},
-		{
-			Nome:  "Ouros",
-			Valor: 8,
-		},
-	}
+	var baralho1 = structs.NovoBaralho("vermelho")
+	//var baralho2 = structs.NovoBaralho("azul")
 
-	fmt.Println(fmt.Sprintf("%v", cartas))
+	fmt.Println(fmt.Sprintf("%v", baralho1))
 
-	cartas = ordenarDaMenorCartaParaAMaior(cartas)
-	fmt.Println(fmt.Sprintf("ordenarDaMenorCartaParaAMaior - %v", cartas))
+	baralho1 = funcoes.Embaralhar(baralho1)
+	fmt.Println(fmt.Sprintf("Embaralhado - %v", baralho1))
 
-}
-
-func ordenarDaMenorCartaParaAMaior(cartas []carta) []carta {
-	for i := 0; i < len(cartas); i++ {
-		var cartaComMenorValor carta
-		var indiceJ int = i
-
-		cartaComMenorValor = cartas[i]
-
-		for j := i; j < len(cartas); j++ {
-			if cartaComMenorValor.Nome == cartas[j].Nome {
-				continue
-			} else {
-				if cartaComMenorValor.Valor > cartas[j].Valor {
-					cartaComMenorValor = cartas[j]
-					indiceJ = j
-				}
-			}
-		}
-
-		if cartaComMenorValor.Nome != cartas[i].Nome {
-			cartas[indiceJ] = cartas[i]
-			cartas[i] = cartaComMenorValor
-		}
-	}
-	return cartas
+	baralho1 = funcoes.OrdenarDaMenorCartaParaAMaior(baralho1)
+	fmt.Println(fmt.Sprintf("ordenarDaMenorCartaParaAMaior - %v", baralho1))
 }
