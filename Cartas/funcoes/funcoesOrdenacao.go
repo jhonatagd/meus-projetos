@@ -1,6 +1,7 @@
 package funcoes
 
 import (
+	"fmt"
 	"math/rand"
 
 	"example.com/greetings/Cartas/structs"
@@ -8,11 +9,10 @@ import (
 
 func Embaralhar(cartas []structs.Carta) []structs.Carta {
 	for i := 0; i < 100; i++ {
-		var posicao1 = rand.Intn(len(cartas))
-		var posicao2 = rand.Intn(len(cartas))
+		posicao1 := rand.Intn(len(cartas))
+		posicao2 := rand.Intn(len(cartas))
 
-		var variavelAuxiliar structs.Carta
-		variavelAuxiliar = cartas[posicao1]
+		variavelAuxiliar := cartas[posicao1]
 
 		cartas[posicao1] = cartas[posicao2]
 		cartas[posicao2] = variavelAuxiliar
@@ -22,18 +22,339 @@ func Embaralhar(cartas []structs.Carta) []structs.Carta {
 }
 
 func EmbaralharByJhona(cartas []structs.Carta) []structs.Carta {
-	//Fazer um método de embaralhar utilizando outro algoritmo. Dica: Utilizar o rand.Intn ou alguma logica que vc pensar
+	for i := 0; i < 100; i++ {
+		var monteA []structs.Carta
+		var monteB []structs.Carta
+		var monteC []structs.Carta
+		var indiceCartas int = (len(cartas)) / 3
+		monteA = cartas[0:indiceCartas]
+		monteB = cartas[indiceCartas : indiceCartas+indiceCartas]
+		monteC = cartas[indiceCartas+indiceCartas:]
+		cartas = append(monteB, monteC...)
+		cartas = append(cartas, monteA...)
+	}
 	return cartas
 }
 
-func OrdernarBaralhoPorValorENaipe(cartas []structs.Carta) []structs.Carta {
-	//Order de Naipes - Paus, Copas, Espadas, Ouro. Resultado => A Paus, A Copas, A Espadas, A Ouro, 2 Paus, 2 Copas, ....
-	return cartas
+func OrdenarValorACadaNaipe(baralho []structs.Carta) []structs.Carta {
+	var valorA []structs.Carta
+	var valor2 []structs.Carta
+	var valor3 []structs.Carta
+	var valor4 []structs.Carta
+	var valor5 []structs.Carta
+	var valor6 []structs.Carta
+	var valor7 []structs.Carta
+	var valor8 []structs.Carta
+	var valor9 []structs.Carta
+	var valor10 []structs.Carta
+	var valorJ []structs.Carta
+	var valorQ []structs.Carta
+	var valorK []structs.Carta
+
+	for _, valorSelecionado := range baralho {
+		if valorSelecionado.Valor == "A" {
+			valorA = append(valorA, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "2" {
+			valor2 = append(valor2, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "3" {
+			valor3 = append(valor3, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "4" {
+			valor4 = append(valor4, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "5" {
+			valor5 = append(valor5, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "6" {
+			valor6 = append(valor6, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "7" {
+			valor7 = append(valor7, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "8" {
+			valor8 = append(valor8, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "9" {
+			valor9 = append(valor9, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "10" {
+			valor10 = append(valor10, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "J" {
+			valorJ = append(valorJ, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "K" {
+			valorK = append(valorK, valorSelecionado)
+		}
+		if valorSelecionado.Valor == "Q" {
+			valorQ = append(valorQ, valorSelecionado)
+		}
+	}
+
+	valorA = OrdernarBaralhoPorNaipe(valorA)
+	valor2 = OrdernarBaralhoPorNaipe(valor2)
+	valor3 = OrdernarBaralhoPorNaipe(valor3)
+	valor4 = OrdernarBaralhoPorNaipe(valor4)
+	valor5 = OrdernarBaralhoPorNaipe(valor5)
+	valor6 = OrdernarBaralhoPorNaipe(valor6)
+	valor7 = OrdernarBaralhoPorNaipe(valor7)
+	valor8 = OrdernarBaralhoPorNaipe(valor8)
+	valor9 = OrdernarBaralhoPorNaipe(valor9)
+	valor10 = OrdernarBaralhoPorNaipe(valor10)
+	valorK = OrdernarBaralhoPorNaipe(valorK)
+	valorJ = OrdernarBaralhoPorNaipe(valorJ)
+	valorQ = OrdernarBaralhoPorNaipe(valorQ)
+
+	var juntaBaralho []structs.Carta
+	juntaBaralho = append(juntaBaralho, valorA...)
+	juntaBaralho = append(juntaBaralho, valor2...)
+	juntaBaralho = append(juntaBaralho, valor3...)
+	juntaBaralho = append(juntaBaralho, valor4...)
+	juntaBaralho = append(juntaBaralho, valor5...)
+	juntaBaralho = append(juntaBaralho, valor6...)
+	juntaBaralho = append(juntaBaralho, valor7...)
+	juntaBaralho = append(juntaBaralho, valor8...)
+	juntaBaralho = append(juntaBaralho, valor9...)
+	juntaBaralho = append(juntaBaralho, valor10...)
+	juntaBaralho = append(juntaBaralho, valorJ...)
+	juntaBaralho = append(juntaBaralho, valorQ...)
+	juntaBaralho = append(juntaBaralho, valorK...)
+
+	return juntaBaralho
 }
 
-func OrdernarBaralhoNaipeEValor(cartas []structs.Carta) []structs.Carta {
-	//Order de Naipes - Paus, Copas, Espadas, Ouro. Resultado => A Paus, 2 Paus, 3 Paus, ..., A Copas, 2 Copas, 3 Copas ....
-	return cartas
+func OrdernarBaralhoPorNaipe(cartas []structs.Carta) []structs.Carta {
+	var cartasDePaus []structs.Carta
+	var cartasDeCopas []structs.Carta
+	var cartasDeEspadas []structs.Carta
+	var cartasDeOuros []structs.Carta
+	for _, cartaSelecionada := range cartas {
+		if cartaSelecionada.Naipe == "Paus" {
+			cartasDePaus = append(cartasDePaus, cartaSelecionada)
+
+		}
+		if cartaSelecionada.Naipe == "Copas" {
+			cartasDeCopas = append(cartasDeCopas, cartaSelecionada)
+
+		}
+
+		if cartaSelecionada.Naipe == "Espadas" {
+			cartasDeEspadas = append(cartasDeEspadas, cartaSelecionada)
+		}
+
+		if cartaSelecionada.Naipe == "Ouros" {
+			cartasDeOuros = append(cartasDeOuros, cartaSelecionada)
+		}
+
+	}
+	var juntaBaralho []structs.Carta
+	juntaBaralho = append(juntaBaralho, cartasDePaus...)
+	juntaBaralho = append(juntaBaralho, cartasDeCopas...)
+	juntaBaralho = append(juntaBaralho, cartasDeEspadas...)
+	juntaBaralho = append(juntaBaralho, cartasDeOuros...)
+	return juntaBaralho
+}
+
+func OrdernarBaralhoNaipeEValor(baralhoInicial []structs.Carta) []structs.Carta {
+	var baralhoDePaus []structs.Carta
+	var baralhoDeCopas []structs.Carta
+	var baralhoDeEspadas []structs.Carta
+	var baralhoDeOuros []structs.Carta
+	for _, carta := range baralhoInicial {
+		fmt.Println(carta)
+		if carta.Naipe == "Paus" {
+			baralhoDePaus = append(baralhoDePaus, carta)
+		} else if carta.Naipe == "Copas" {
+			baralhoDeCopas = append(baralhoDeCopas, carta)
+		} else if carta.Naipe == "Espadas" {
+			baralhoDeEspadas = append(baralhoDeEspadas, carta)
+		} else {
+			baralhoDeOuros = append(baralhoDeOuros, carta)
+		}
+	}
+
+	var baralhoDeA []structs.Carta
+	var baralhoDe2 []structs.Carta
+	var baralhoDe3 []structs.Carta
+	var baralhoDe4 []structs.Carta
+	var baralhoDe5 []structs.Carta
+	var baralhoDe6 []structs.Carta
+	var baralhoDe7 []structs.Carta
+	var baralhoDe8 []structs.Carta
+	var baralhoDe9 []structs.Carta
+	var baralhoDe10 []structs.Carta
+	var baralhoDeJ []structs.Carta
+	var baralhoDeQ []structs.Carta
+	var baralhoDeK []structs.Carta
+
+	for _, carta := range baralhoDePaus {
+		if carta.Valor == "A" {
+			baralhoDeA = append(baralhoDeA, carta)
+		}
+		if carta.Valor == "2" {
+			baralhoDe2 = append(baralhoDe2, carta)
+		}
+		if carta.Valor == "3" {
+			baralhoDe3 = append(baralhoDe3, carta)
+		}
+		if carta.Valor == "4" {
+			baralhoDe4 = append(baralhoDe4, carta)
+		}
+		if carta.Valor == "5" {
+			baralhoDe5 = append(baralhoDe5, carta)
+		}
+		if carta.Valor == "6" {
+			baralhoDe6 = append(baralhoDe6, carta)
+		}
+		if carta.Valor == "7" {
+			baralhoDe7 = append(baralhoDe7, carta)
+		}
+		if carta.Valor == "8" {
+			baralhoDe8 = append(baralhoDe8, carta)
+		}
+		if carta.Valor == "9" {
+			baralhoDe9 = append(baralhoDe9, carta)
+		}
+		if carta.Valor == "10" {
+			baralhoDe10 = append(baralhoDe10, carta)
+		}
+		if carta.Valor == "J" {
+			baralhoDeJ = append(baralhoDeJ, carta)
+		}
+		if carta.Valor == "Q" {
+			baralhoDeQ = append(baralhoDeQ, carta)
+		}
+		if carta.Valor == "K" {
+			baralhoDeK = append(baralhoDeK, carta)
+		}
+	}
+	for _, carta := range baralhoDeCopas {
+		if carta.Valor == "A" {
+			baralhoDeA = append(baralhoDeA, carta)
+		}
+		if carta.Valor == "2" {
+			baralhoDe2 = append(baralhoDe2, carta)
+		}
+		if carta.Valor == "3" {
+			baralhoDe3 = append(baralhoDe3, carta)
+		}
+		if carta.Valor == "4" {
+			baralhoDe4 = append(baralhoDe4, carta)
+		}
+		if carta.Valor == "5" {
+			baralhoDe5 = append(baralhoDe5, carta)
+		}
+		if carta.Valor == "6" {
+			baralhoDe6 = append(baralhoDe6, carta)
+		}
+		if carta.Valor == "7" {
+			baralhoDe7 = append(baralhoDe7, carta)
+		}
+		if carta.Valor == "8" {
+			baralhoDe8 = append(baralhoDe8, carta)
+		}
+		if carta.Valor == "9" {
+			baralhoDe9 = append(baralhoDe9, carta)
+		}
+		if carta.Valor == "10" {
+			baralhoDe10 = append(baralhoDe10, carta)
+		}
+		if carta.Valor == "J" {
+			baralhoDeJ = append(baralhoDeJ, carta)
+		}
+		if carta.Valor == "Q" {
+			baralhoDeQ = append(baralhoDeQ, carta)
+		}
+		if carta.Valor == "K" {
+			baralhoDeK = append(baralhoDeK, carta)
+		}
+	}
+	for _, carta := range baralhoDeEspadas {
+		if carta.Valor == "A" {
+			baralhoDeA = append(baralhoDeA, carta)
+		}
+		if carta.Valor == "2" {
+			baralhoDe2 = append(baralhoDe2, carta)
+		}
+		if carta.Valor == "3" {
+			baralhoDe3 = append(baralhoDe3, carta)
+		}
+		if carta.Valor == "4" {
+			baralhoDe4 = append(baralhoDe4, carta)
+		}
+		if carta.Valor == "5" {
+			baralhoDe5 = append(baralhoDe5, carta)
+		}
+		if carta.Valor == "6" {
+			baralhoDe6 = append(baralhoDe6, carta)
+		}
+		if carta.Valor == "7" {
+			baralhoDe7 = append(baralhoDe7, carta)
+		}
+		if carta.Valor == "8" {
+			baralhoDe8 = append(baralhoDe8, carta)
+		}
+		if carta.Valor == "9" {
+			baralhoDe9 = append(baralhoDe9, carta)
+		}
+		if carta.Valor == "10" {
+			baralhoDe10 = append(baralhoDe10, carta)
+		}
+		if carta.Valor == "J" {
+			baralhoDeJ = append(baralhoDeJ, carta)
+		}
+		if carta.Valor == "Q" {
+			baralhoDeQ = append(baralhoDeQ, carta)
+		}
+		if carta.Valor == "K" {
+			baralhoDeK = append(baralhoDeK, carta)
+		}
+	}
+	for _, carta := range baralhoDeOuros {
+		if carta.Valor == "A" {
+			baralhoDeA = append(baralhoDeA, carta)
+		}
+		if carta.Valor == "2" {
+			baralhoDe2 = append(baralhoDe2, carta)
+		}
+		if carta.Valor == "3" {
+			baralhoDe3 = append(baralhoDe3, carta)
+		}
+		if carta.Valor == "4" {
+			baralhoDe4 = append(baralhoDe4, carta)
+		}
+		if carta.Valor == "5" {
+			baralhoDe5 = append(baralhoDe5, carta)
+		}
+		if carta.Valor == "6" {
+			baralhoDe6 = append(baralhoDe6, carta)
+		}
+		if carta.Valor == "7" {
+			baralhoDe7 = append(baralhoDe7, carta)
+		}
+		if carta.Valor == "8" {
+			baralhoDe8 = append(baralhoDe8, carta)
+		}
+		if carta.Valor == "9" {
+			baralhoDe9 = append(baralhoDe9, carta)
+		}
+		if carta.Valor == "10" {
+			baralhoDe10 = append(baralhoDe10, carta)
+		}
+		if carta.Valor == "J" {
+			baralhoDeJ = append(baralhoDeJ, carta)
+		}
+		if carta.Valor == "Q" {
+			baralhoDeQ = append(baralhoDeQ, carta)
+		}
+		if carta.Valor == "K" {
+			baralhoDeK = append(baralhoDeK, carta)
+		}
+	}
+
+	return baralhoInicial
 }
 
 func OrdenarDaMenorCartaParaAMaior(cartas []structs.Carta) []structs.Carta {

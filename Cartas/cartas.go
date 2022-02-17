@@ -13,9 +13,13 @@ func main() {
 
 	fmt.Println(fmt.Sprintf("%v", baralho1))
 
-	baralho1 = funcoes.Embaralhar(baralho1)
+	baralho1 = funcoes.EmbaralharByJhona(baralho1)
 	fmt.Println(fmt.Sprintf("Embaralhado - %v", baralho1))
 
-	baralho1 = funcoes.OrdenarDaMenorCartaParaAMaior(baralho1)
-	fmt.Println(fmt.Sprintf("ordenarDaMenorCartaParaAMaior - %v", baralho1))
+	baralho1 = funcoes.OrdenarValorACadaNaipe(baralho1)
+	fmt.Println(fmt.Sprintf("Ordenar Valor A Cada Naipe - %v", baralho1))
+
+	baralho1 = funcoes.OrdernarBaralhoNaipeEValor(baralho1)
+	fmt.Println(fmt.Sprintf("Ordernar Baralho Naipe E Valor - %v", baralho1))
+
 }
