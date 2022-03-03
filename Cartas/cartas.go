@@ -16,10 +16,10 @@ func main() {
 	baralho1 = funcoes.EmbaralharByJhona(baralho1)
 	fmt.Println(fmt.Sprintf("Embaralhado - %v", baralho1))
 
-	baralho1 = funcoes.OrdenarValorACadaNaipe(baralho1)
-	fmt.Println(fmt.Sprintf("Ordenar Valor A Cada Naipe - %v", baralho1))
+	baralhoDeRetorno := funcoes.OrdenarValorACadaNaipe(baralho1)
+	fmt.Println(fmt.Sprintf("Ordenar Valor A Cada Naipe - %v", baralhoDeRetorno))
 
-	baralho1 = funcoes.OrdernarBaralhoNaipeEValor(baralho1)
-	fmt.Println(fmt.Sprintf("Ordernar Baralho Naipe E Valor - %v", baralho1))
+	baralhoDeRetorno2 := funcoes.OrdernarBaralhoNaipeEValor(baralho1)
+	fmt.Println(fmt.Sprintf("Ordernar Baralho Naipe E Valor - %v", baralhoDeRetorno2))
 
 }
