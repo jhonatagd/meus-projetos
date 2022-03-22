@@ -162,7 +162,6 @@ func OrdernarBaralhoNaipeEValor(baralhoInicial []structs.Carta) []structs.Carta 
 	var baralhoDeEspadas []structs.Carta
 	var baralhoDeOuros []structs.Carta
 	for _, carta := range baralhoInicial {
-		// 	fmt.Println(carta)
 		if carta.Naipe == "Paus" {
 			baralhoDePaus = append(baralhoDePaus, carta)
 		} else if carta.Naipe == "Copas" {
@@ -179,7 +178,6 @@ func OrdernarBaralhoNaipeEValor(baralhoInicial []structs.Carta) []structs.Carta 
 	var baralhoDeEspadasOrdenado = ordenarBaralhoPorValor(baralhoDeEspadas)
 	var baralhoDeOurosOrdenado = ordenarBaralhoPorValor(baralhoDeOuros)
 
-	// ordenar os baralhos um por um.
 	var juntaUltimosNaipes []structs.Carta
 	juntaUltimosNaipes = append(juntaUltimosNaipes, baralhoDePausOrdenado...)
 	juntaUltimosNaipes = append(juntaUltimosNaipes, baralhoDeCopasOrdenado...)
