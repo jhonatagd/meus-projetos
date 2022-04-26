@@ -10,15 +10,22 @@ import (
 )
 
 func main() {
+	var metroint float64
+	var err error
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("Tamanho em metros quadrados da área a ser pintada: ")
-	metros, _ := reader.ReadString('\n')
-	limpaMetros := strings.TrimSpace(metros)
-	metroint, err := strconv.ParseFloat(limpaMetros, 64)
-	if err != nil {
-		fmt.Println("O que você digitou não é um metro quadrado ")
+	for {
+		fmt.Println("Tamanho em metros quadrados da área a ser pintada: ")
+		metros, _ := reader.ReadString('\n')
+		limpaMetros := strings.TrimSpace(metros)
+		metroint, err = strconv.ParseFloat(limpaMetros, 64)
+		if err != nil {
+			fmt.Println("O que você digitou não é um metro quadrado ")
+		} else {
+			break
+		}
 	}
+
 	preco := 80.0
 	litrosNaLata := 18.0
 	litros := metroint / 6.0
