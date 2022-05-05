@@ -12,44 +12,44 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Primeiro numero:")
-	primeiro, err := reader.ReadString('\n')
-	primeiroNumero := strings.TrimSpace(primeiro)
-	primeiroNumero = strings.ToUpper(primeiroNumero)
+	primeiro, _ := reader.ReadString('\n')
+	limpaPrimeiro := strings.TrimSpace(primeiro)
+	primeiroNumero, err := strconv.Atoi(limpaPrimeiro)
 	if err != nil {
 		fmt.Println("O que você digitou não é um número")
 	}
 	fmt.Println("Segundo numero:")
-	segundo, err := reader.ReadString('\n')
-	segundoNumero := strings.TrimSpace(segundo)
-	segundoNumero = strings.ToUpper(segundoNumero)
+	segundo, _ := reader.ReadString('\n')
+	limpaSegundo := strings.TrimSpace(segundo)
+	segundoNumero, err := strconv.Atoi(limpaSegundo)
 	if err != nil {
 		fmt.Println("O que você digitou não é um número")
 	}
 	fmt.Println("terceiro numero:")
-	terceiro, err := reader.ReadString('\n')
-	terceiroNumero := strings.TrimSpace(terceiro)
-	terceiroNumero = strings.ToUpper(terceiroNumero)
+	terceiro, _ := reader.ReadString('\n')
+	limpaTerceiro := strings.TrimSpace(terceiro)
+	terceiroNumero, err := strconv.Atoi(limpaTerceiro)
 	if err != nil {
 		fmt.Println("O que você digitou não é um número")
 	}
 	fmt.Println("Quarto numero:")
-	quarto, err := reader.ReadString('\n')
-	quartoNumero := strings.TrimSpace(quarto)
-	quartoNumero = strings.ToUpper(quartoNumero)
+	quarto, _ := reader.ReadString('\n')
+	limpaQuarto := strings.TrimSpace(quarto)
+	quartoNumero, err := strconv.Atoi(limpaQuarto)
 	if err != nil {
 		fmt.Println("O que você digitou não é um número")
 	}
 	fmt.Println("Quinto numero:")
-	quinto, err := reader.ReadString('\n')
-	quintoNumero := strings.TrimSpace(terceiro)
-	quintoNumero = strings.ToUpper(quintoNumero)
+	quinto, _ := reader.ReadString('\n')
+	limpaQuinto := strings.TrimSpace(quinto)
+	quintoNumero, err := strconv.Atoi(limpaQuinto)
 	if err != nil {
 		fmt.Println("O que você digitou não é um número")
 	}
 	// Faça um programa que leia 5 números e informe a soma e a média dos números.
 	soma := primeiroNumero + segundoNumero + terceiroNumero + quartoNumero + quintoNumero
-	media := (primeiroNumero + segundoNumero + terceiroNumero + quartoNumero + quintoNumero) / 5
-	
+	media := ((primeiroNumero + segundoNumero + terceiroNumero + quartoNumero + quintoNumero) / 5)
+
 	fmt.Println("Soma dos números:", soma)
 	fmt.Println("Média dos números:", media)
 }
