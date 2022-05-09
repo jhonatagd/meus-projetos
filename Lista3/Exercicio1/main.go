@@ -25,8 +25,6 @@ func main() {
 		} else {
 			fmt.Println("O que você digitou é válido")
 
-			// 2
-			// 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 			for i := notaInt; i <= notaInt+10; i++ {
 				fmt.Println(i)
 			}
@@ -35,6 +33,3 @@ func main() {
 		}
 	}
 }
-
-// 2
-// 2 ,3 ,4, 12
