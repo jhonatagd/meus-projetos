@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 )
 
@@ -20,3 +19,4 @@ func main() {
 	}
 	ultimo := 1
 	penultimo := 1
+}

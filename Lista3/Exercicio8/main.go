@@ -52,4 +52,5 @@ func main() {
 
 	fmt.Println("Soma dos números:", soma)
 	fmt.Println("Média dos números:", media)
+	fmt.Println("o")
 }

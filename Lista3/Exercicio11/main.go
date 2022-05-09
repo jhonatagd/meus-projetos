@@ -28,11 +28,12 @@ func main() {
 
 	if primeiroNumero <= segundoNumero {
 		for i := primeiroNumero; i <= segundoNumero; i++ {
-			fmt.Println(primeiroNumero + segundoNumero)
+			fmt.Println(i)
 		}
 	} else if primeiroNumero >= segundoNumero {
 		for b := segundoNumero; b <= primeiroNumero; b++ {
-			fmt.Println(segundoNumero + primeiroNumero)
+			fmt.Println(b)
 		}
 	}
+	fmt.Println("Soma:", segundoNumero+primeiroNumero)
 }
