@@ -47,10 +47,14 @@ func main() {
 		fmt.Println("O que você digitou não é um número")
 	}
 	// Faça um programa que leia 5 números e informe a soma e a média dos números.
-	soma := primeiroNumero + segundoNumero + terceiroNumero + quartoNumero + quintoNumero
-	media := ((primeiroNumero + segundoNumero + terceiroNumero + quartoNumero + quintoNumero) / 5)
+	soma, media := SomaEMediaDeCincoVariaveis(primeiroNumero, segundoNumero, terceiroNumero, quartoNumero, quintoNumero)
 
 	fmt.Println("Soma dos números:", soma)
 	fmt.Println("Média dos números:", media)
-	fmt.Println("o")
+}
+
+func SomaEMediaDeCincoVariaveis(primeiroNumero int, segundoNumero int, terceiroNumero int, quartoNumero int, quintoNumero int) (int, int) {
+	soma := primeiroNumero + segundoNumero + terceiroNumero + quartoNumero + quintoNumero
+	media := (soma / 5)
+	return soma, media
 }
