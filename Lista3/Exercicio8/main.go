@@ -34,5 +34,4 @@ func main() {
 	media := somaValores / 5
 	fmt.Println("Soma valores:", somaValores)
 	fmt.Println("Media valores:", media)
-
 }
