@@ -21,8 +21,9 @@ func main() {
 	fatorial := 1
 	for i := calculaFatorial; i >= 1; i-- {
 		fatorial = fatorial * i
+		fmt.Print(calculaFatorial, ".")
+		calculaFatorial = calculaFatorial - 1
 	}
 	fmt.Println(fatorial)
 
-} // Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário.
-// Ex.: 5!=5.4.3.2.1=120
+}

@@ -12,24 +12,22 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Numero base:")
-	base, _ := reader.ReadString('\n')
-	limpaBase := strings.TrimSpace(base)
-	pegaBase, err := strconv.Atoi(limpaBase)
+	pegaBase, _ := reader.ReadString('\n')
+	limpaBase := strings.TrimSpace(pegaBase)
+	base, err := strconv.Atoi(limpaBase)
 	if err != nil {
 		fmt.Println("O que você digitou não é um número")
 	}
 	fmt.Println("Numero expoente:")
-	expoente, _ := reader.ReadString('\n')
-	limpaExpoente := strings.TrimSpace(expoente)
-	pegaExpoente, err := strconv.Atoi(limpaExpoente)
+	pegaExpoente, _ := reader.ReadString('\n')
+	limpaExpoente := strings.TrimSpace(pegaExpoente)
+	expoente, err := strconv.Atoi(limpaExpoente)
 	if err != nil {
 		fmt.Println("O que você digitou não é um número")
 	}
-
-	for i := ; i <= pegapegaBaseExpoente; i++ {
-		fmt.Println(i)
+	resultado := 1
+	for i := 0; i < expoente; i++ {
+		resultado = resultado * base
 	}
-	for i := pegaBase; i >= pegaExpoente; i++ {
-		fmt.Println(i)
-	} // terminar -----------------------------------------
+	fmt.Println(resultado)
 }
