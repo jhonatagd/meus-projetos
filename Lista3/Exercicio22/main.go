@@ -18,6 +18,9 @@ func main() {
 	if err != nil {
 		fmt.Println("O que você digitou não é um numero")
 	}
+	//Altere o programa de cálculo dos números primos, informando,
+	//caso o número não seja primo, por quais número ele é divisível.
+
 	if numero == 2 {
 		fmt.Println("é primo")
 		return
