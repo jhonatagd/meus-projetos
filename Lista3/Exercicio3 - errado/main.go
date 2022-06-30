@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	//Errrinhos: Programa esta terminando, mesmo que o valor digitado seja inválido
+	//Sugestão: Um for para cada valor pedido, terminando o for somente quando o valor digitado for valido
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Nome:")
@@ -74,10 +76,10 @@ func main() {
 		fmt.Println("Estado Civil: 's', 'c', 'v' ou 'd'")
 	}
 
+	//Faça um programa que leia e valide as seguintes informações:
 	//Nome: maior que 3 caracteres;
 	//Idade: entre 0 e 150;
 	//Salário: maior que zero;
 	//Sexo: 'f' ou 'm';
 	//Estado Civil: 's', 'c', 'v', 'd';
-
 }

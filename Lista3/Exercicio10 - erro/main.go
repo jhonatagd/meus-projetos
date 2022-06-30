@@ -8,7 +8,10 @@ import (
 	"strings"
 )
 
+//Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
 func main() {
+	//Vc esta validando o valor digitado, mas esta aceitando o erro. Repetir a solicitação ate que o usuário digite um valor correto
+	//Dica, for pra cada input
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Primeiro numero:")
@@ -26,6 +29,10 @@ func main() {
 		fmt.Println("O que você digitou não é um número")
 	}
 
+	//O exercicio pede para printar os inteiros que estão no intervalo
+	//Vc esta printando tbm os valores digitados
+	//Exemplo: 5 a 10 -> 6, 7, 8 e 9
+	//Dica: O segredo esta no for
 	if primeiroNumero <= segundoNumero {
 		for i := primeiroNumero; i <= segundoNumero; i++ {
 			fmt.Println(i)
@@ -36,5 +43,3 @@ func main() {
 		}
 	}
 }
-
-//Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.

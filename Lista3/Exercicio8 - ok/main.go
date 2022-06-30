@@ -8,10 +8,11 @@ import (
 	"strings"
 )
 
+//Faça um programa que leia 5 números e informe a soma e a média dos números.
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	maiorValor := 0
-	// Faça um programa que leia 5 números e informe o maior número.
+	somaValores := 0
+
 	for i := 0; i < 5; i++ {
 		fmt.Println("Digitar o ", i+1, "° numero:")
 		nUm, _ := reader.ReadString('\n')
@@ -21,16 +22,15 @@ func main() {
 			fmt.Println("O que você digitou não é um numero")
 			i = i - 1
 		} else {
-
 			if i == 0 {
-				maiorValor = numero
+				somaValores = numero
 			} else {
-
-				if numero > maiorValor {
-					maiorValor = numero
-				}
+				somaValores = somaValores + numero
 			}
 		}
 	}
-	fmt.Println("Maior valor:", maiorValor)
+
+	media := somaValores / 5
+	fmt.Println("Soma valores:", somaValores)
+	fmt.Println("Media valores:", media)
 }
