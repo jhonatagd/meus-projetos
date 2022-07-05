@@ -33,11 +33,11 @@ func main() {
 	//Vc esta printando tbm os valores digitados
 	//Exemplo: 5 a 10 -> 6, 7, 8 e 9
 	//Dica: O segredo esta no for
-	if primeiroNumero <= segundoNumero {
+	if primeiroNumero < segundoNumero {
 		for i := primeiroNumero; i <= segundoNumero; i++ {
 			fmt.Println(i)
 		}
-	} else if primeiroNumero >= segundoNumero {
+	} else if primeiroNumero > segundoNumero {
 		for b := segundoNumero; b <= primeiroNumero; b++ {
 			fmt.Println(b)
 		}

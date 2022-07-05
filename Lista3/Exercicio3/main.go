@@ -9,17 +9,39 @@ import (
 )
 
 func main() {
-	//Errrinhos: Programa esta terminando, mesmo que o valor digitado seja inválido
+	//Errinhos: Programa esta terminando, mesmo que o valor digitado seja inválido
 	//Sugestão: Um for para cada valor pedido, terminando o for somente quando o valor digitado for valido
 	reader := bufio.NewReader(os.Stdin)
+	nome := "0"
+	idade := 0
+	salario := 0
+	sexo := "0"
 
-	fmt.Println("Nome:")
-	um, err := reader.ReadString('\n')
-	nome := strings.TrimSpace(um)
-	nome = strings.ToUpper(nome)
-	if err != nil {
-		fmt.Println("O que você digitou não é um nome")
+	for {
+		fmt.Println("Nome:")
+		um, err := reader.ReadString('\n')
+		pegaNome := strings.TrimSpace(um)
+		pegaNome = strings.ToUpper(pegaNome)
+		_, err = strconv.Atoi(pegaNome)
+		if err == nil {
+			fmt.Println("Nome incorreto, digite novamente:")
+			continue
+		} else {
+
+			nomeLen := len(nome)
+
+			if nomeLen > 3 {
+				nome = pegaNome
+				break
+			} else {
+				fmt.Println("Nome: maior que 3 caracteres")
+				continue
+			}
+
+		}
+
 	}
+
 	fmt.Println("Idade:")
 	dois, _ := reader.ReadString('\n')
 	dois = strings.TrimSpace(dois)
@@ -48,13 +70,7 @@ func main() {
 	if err != nil {
 		fmt.Println("O que você digitou não é um nome")
 	}
-	nomeLen := len(nome)
 
-	if nomeLen > 3 {
-		fmt.Println("Nome ok")
-	} else {
-		fmt.Println("Nome: maior que 3 caracteres")
-	}
 	if Idade >= 0 && Idade <= 150 {
 		fmt.Println("Idade ok")
 	} else {
