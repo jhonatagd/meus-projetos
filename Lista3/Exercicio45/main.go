@@ -12,6 +12,7 @@ func main() {
 	test := 0
 	respostaCerta := 0
 	respostaErrada := 0
+	quantidadeDeAlunos := 0
 	gabarito := []string{"A", "B", "C", "D", "E", "E", "D", "C", "B", "A"}
 	for {
 		for i := 0; i < 10; i++ {
@@ -27,12 +28,14 @@ func main() {
 			}
 
 		}
+
 		fmt.Printf("Deseja verificar as respostas de novo? (S para sim e N para não)")
 		pegaVerifica, _ := reader.ReadString('\n')
 		verifica := strings.TrimSpace(pegaVerifica)
 
 		if verifica == "S" {
-
+			quantidadeDeAlunos = quantidadeDeAlunos + 1
+			continue
 		}
 
 	}

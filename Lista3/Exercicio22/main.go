@@ -23,21 +23,34 @@ func main() {
 
 	if numero == 2 {
 		fmt.Println("é primo")
-		return
+		//	return
 	}
+
 	verificaPar := numero % 2
 	if verificaPar == 0 {
 		fmt.Println("Nâo é primo")
+		//	return
+	}
+	//numeroString := strconv.Itoa(numero)
+	//for i := 0; i < len(numeroString); i++ {
+	//		test, _ := strconv.Atoi(string(numeroString[i]))
+	//		soma = soma + test
+	//	}
+
+	var divisores []int
+	// slice : slice não tem um tamanho fixo, array tem
+	for i := 1; i < numero; i++ {
+		testeDv := numero % i
+		if testeDv == 0 {
+			divisores = append(divisores, i)
+		}
+	}
+	tamanhoLen := len(divisores)
+	if tamanhoLen == 1 {
+		fmt.Println("é primo")
 		return
 	}
-	numeroString := strconv.Itoa(numero)
-	soma := 0
-	for i := 0; i < len(numeroString); i++ {
-		test, _ := strconv.Atoi(string(numeroString[i]))
-		soma = soma + test
-	}
-	if soma%3 == 0 || soma%5 == 0 || soma%7 == 0 || soma%11 == 0 {
-		fmt.Println("é primo")
-	}
+
+	fmt.Println("Divisores de ", numero, ":", divisores)
 
 }
