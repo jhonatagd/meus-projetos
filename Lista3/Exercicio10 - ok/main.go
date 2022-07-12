@@ -16,7 +16,6 @@ func main() {
 	primeiroNumero1 := 0
 	segundoNumero2 := 0
 	for {
-
 		fmt.Println("Primeiro numero:")
 		primeiro, _ := reader.ReadString('\n')
 		limpaPrimeiro := strings.TrimSpace(primeiro)
@@ -25,7 +24,7 @@ func main() {
 			fmt.Println("O que você digitou não é um número")
 			continue
 		} else {
-			primeiroNumero1 = primeiroNumero1 + primeiroNumero
+			primeiroNumero1 = primeiroNumero
 			break
 		}
 
@@ -41,7 +40,7 @@ func main() {
 			fmt.Println("O que você digitou não é um número")
 			continue
 		} else {
-			segundoNumero2 = segundoNumero2 + segundoNumero
+			segundoNumero2 = segundoNumero
 			break
 		}
 

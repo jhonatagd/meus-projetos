@@ -8,9 +8,11 @@ import (
 	"strings"
 )
 
+//A série de Fibonacci é formada pela seqüência 1,1,2,3,5,8,13,21,34,55,...
+//Faça um programa capaz de gerar a série até o n−ésimo termo.
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
+	//Errinho: Validação da entrada de dados. O código segue com o erro do usuário.
 	fmt.Println("N:")
 	termo, err := reader.ReadString('\n')
 	termo = strings.TrimSpace(termo)

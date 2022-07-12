@@ -10,6 +10,7 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
+	// Errinho de validação
 
 	fmt.Printf("Quantos numeros voce deseja calcular?")
 	pegaNumero, _ := reader.ReadString('\n')
@@ -32,8 +33,8 @@ func main() {
 			i = i - 1
 		} else if numero > 1000 || numero < 0 {
 			fmt.Println("Numeros somente de 0 a 1000")
+			i = i - 1
 		} else {
-
 			if i == 0 {
 				menorValor = numero
 				maiorValor = numero
@@ -46,6 +47,7 @@ func main() {
 				if numero > maiorValor {
 					maiorValor = numero
 				}
+
 				somaValores = somaValores + numero
 			}
 		}

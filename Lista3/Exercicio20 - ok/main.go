@@ -18,16 +18,19 @@ func main() {
 		calculaFatorial, err := strconv.Atoi(limpaCalcula)
 		if err != nil {
 			fmt.Println("O que você digitou não é um número")
+			continue
 		}
+
 		if calculaFatorial < 16 {
 			fmt.Println("Numeros menores que 16 invalido.")
-
-			return
+			continue
 		}
+
 		fatorial := 1
 		for i := calculaFatorial; i >= 1; i-- {
 			fatorial = fatorial * i
 		}
+
 		fmt.Println(fatorial)
 	}
 } // permitindo ao usuário calcular o fatorial várias vezes

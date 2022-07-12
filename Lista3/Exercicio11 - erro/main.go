@@ -8,7 +8,9 @@ import (
 	"strings"
 )
 
+//Altere o programa anterior para mostrar no final a soma dos números.
 func main() {
+	//Mesmos problemas do exercicio 10
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Primeiro numero:")

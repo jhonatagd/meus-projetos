@@ -10,6 +10,7 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
+	//Errinho de validação
 
 	fmt.Printf("Quantos numeros voce deseja calcular?")
 	pegaNumero, _ := reader.ReadString('\n')
@@ -31,7 +32,6 @@ func main() {
 			fmt.Println("O que você digitou não é um numero")
 			i = i - 1
 		} else {
-
 			if i == 0 {
 				menorValor = numero
 				maiorValor = numero

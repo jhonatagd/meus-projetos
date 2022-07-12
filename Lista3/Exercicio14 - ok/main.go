@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+//Faça um programa que peça 10 números inteiros,
+// calcule e mostre a quantidade de números pares e a quantidade de números impares.
 func main() {
 	numerosPares := 0
 	numerosImpares := 0
@@ -21,6 +23,7 @@ func main() {
 		if err != nil {
 			fmt.Println("O que você digitou não é um número")
 			i = i - 1
+			continue
 		}
 		if ehPar(primeiroNumero) {
 			numerosPares = numerosPares + 1

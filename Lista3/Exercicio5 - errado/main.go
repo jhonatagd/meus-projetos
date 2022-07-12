@@ -11,12 +11,12 @@ import (
 //Altere o programa anterior permitindo ao usuário informar as populações e as taxas de crescimento iniciais.
 //Valide a entrada e permita repetir a operação.
 func main() {
-	//Erros:
-	//Vc esta validando as entradas de usuário, mas aceita qualquer valor. Só seguir quando o valor digitado for valido.
-	//Erro acima para todos
+	//Erros/Dicas:
 	//Ter a atenção para calcular os anos de crescimento com base na cidade com maior taxa de crescimento
 	// Se a taxa da cidade A for maior, comparar sempre com a cidade A
 	// Se a taxa da cidade B for maior, comparar sempre com a cidade B
+	// Ideal é comparar por taxa!
+	// Ficar atento quando as taxas forem iguais.
 	// No calculo de anos necessários, falta fazer o for
 	reader := bufio.NewReader(os.Stdin)
 	habitantesA1 := 0
@@ -33,7 +33,7 @@ func main() {
 			fmt.Println("O que você digitou não é um numero")
 			continue
 		} else {
-			habitantesA1 = habitantesA1 + habA
+			habitantesA1 = habA
 			break
 		}
 	}
@@ -46,13 +46,12 @@ func main() {
 			fmt.Println("O que você digitou não é um numero")
 			continue
 		} else {
-			habitantesB2 = habitantesB2 + habB
+			habitantesB2 = habB
 			break
 		}
 	}
 
 	for {
-
 		fmt.Println("Taxa A:")
 		taxA, _ := reader.ReadString('\n')
 		limpaTaxA := strings.TrimSpace(taxA)
@@ -61,7 +60,7 @@ func main() {
 			fmt.Println("O que você digitou não é um numero")
 			continue
 		} else {
-			taxA1 = taxA1 + taxaA
+			taxA1 = taxaA
 			break
 		}
 
@@ -77,7 +76,7 @@ func main() {
 			fmt.Println("O que você digitou não é um numero")
 			continue
 		} else {
-			taxB2 = taxB2 + taxaB
+			taxB2 = taxaB
 			break
 		}
 	}

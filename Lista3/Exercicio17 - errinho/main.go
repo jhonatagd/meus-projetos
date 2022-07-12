@@ -10,7 +10,7 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
+	// Errinho de validação na entrada do usuário
 	fmt.Println("calcular o fatorial do numero:")
 	calcula, _ := reader.ReadString('\n')
 	limpaCalcula := strings.TrimSpace(calcula)

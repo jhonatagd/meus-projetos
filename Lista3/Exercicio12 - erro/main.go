@@ -8,7 +8,19 @@ import (
 	"strings"
 )
 
+// Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10.
+// O usuário deve informar de qual numero ele deseja ver a tabuada.
+// A saída deve ser conforme o exemplo abaixo:
+// Tabuada de 5:
+// 5 X 1 = 5
+// 5 X 2 = 10
+// ...
+// 5 X 10 = 50
 func main() {
+	// Erros
+	// Não esta validando a entrada do usuário. Está aceitando qualquer valor
+	// USAR FOR!!!
+	// Mantem a regra criada pq esta certo! Mas faz o mesmo resultado usando for.
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Digite um numero de 1 a 10:")
@@ -29,5 +41,4 @@ func main() {
 	fmt.Println(pegaNumero, "* 8 =", pegaNumero*8)
 	fmt.Println(pegaNumero, "* 9 =", pegaNumero*9)
 	fmt.Println(pegaNumero, "* 10 =", pegaNumero*10)
-
 }

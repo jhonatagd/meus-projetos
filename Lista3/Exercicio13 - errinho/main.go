@@ -8,7 +8,11 @@ import (
 	"strings"
 )
 
+// Faça um programa que peça dois números, base e expoente,
+// calcule e mostre o primeiro número elevado ao segundo número.
+// Não utilize a função de potência da linguagem.
 func main() {
+	// Errinho: Validar os inputs. Está seguindo o código com qualquer valor
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Numero base:")
