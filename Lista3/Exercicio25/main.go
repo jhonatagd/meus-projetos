@@ -10,17 +10,23 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
+	numeroDePessoas := 0
+	for {
+		fmt.Println("Numero de pessoas:")
+		pegaIdade, _ := reader.ReadString('\n')
+		limpaIdade := strings.TrimSpace(pegaIdade)
+		nPessoas, err := strconv.Atoi(limpaIdade)
+		if err != nil {
+			fmt.Println("O que você digitou não é um numero")
+			continue
+		}
+		numeroDePessoas = nPessoas
+		break
 
-	fmt.Println("Numero de pessoas:")
-	pegaIdade, _ := reader.ReadString('\n')
-	limpaIdade := strings.TrimSpace(pegaIdade)
-	nPessoas, err := strconv.Atoi(limpaIdade)
-
-	if err != nil {
-		fmt.Println("O que você digitou não é um numero")
 	}
+
 	valorNota := 0
-	for i := 0; i < nPessoas; i++ {
+	for i := 0; i < numeroDePessoas; i++ {
 		fmt.Println("Digitar o ", i+1, "° numero:")
 		nUm, _ := reader.ReadString('\n')
 		limpaNUm := strings.TrimSpace(nUm)
@@ -38,7 +44,7 @@ func main() {
 		}
 	}
 
-	calculaMedia := valorNota / nPessoas
+	calculaMedia := valorNota / numeroDePessoas
 	if calculaMedia >= 0 && calculaMedia <= 25 {
 		fmt.Println("Turma jovem")
 	} else if calculaMedia >= 26 && calculaMedia <= 60 {

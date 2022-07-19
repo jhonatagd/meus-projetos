@@ -10,20 +10,26 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
-	fmt.Println("Total de eleitores:")
-	pegaTotal, _ := reader.ReadString('\n')
-	limpaTotal := strings.TrimSpace(pegaTotal)
-	totalEleitores, err := strconv.Atoi(limpaTotal)
-	if err != nil {
-		fmt.Println("O que você digitou não é um numero")
+	totalDeEleitores := 0
+	for {
+		fmt.Println("Total de eleitores:")
+		pegaTotal, _ := reader.ReadString('\n')
+		limpaTotal := strings.TrimSpace(pegaTotal)
+		totalEleitores, err := strconv.Atoi(limpaTotal)
+		if err != nil {
+			fmt.Println("O que você digitou não é um numero")
+			continue
+		}
+		totalDeEleitores = totalEleitores
+		break
 	}
+
 	fmt.Println("Eleitores: 1 2 ou 3")
 	eleitor1 := 0
 	eleitor2 := 0
 	eleitor3 := 0
 
-	for i := 0; i < totalEleitores; i++ {
+	for i := 0; i < totalDeEleitores; i++ {
 		fmt.Println(i+1, "° eleitor, vote no seu candidato:")
 		pegoVoto, _ := reader.ReadString('\n')
 		limpaVoto := strings.TrimSpace(pegoVoto)

@@ -10,17 +10,22 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
-	fmt.Println("Quantidade de CDs:")
-	quantidadeCD, _ := reader.ReadString('\n')
-	limpaQuantidadeCD := strings.TrimSpace(quantidadeCD)
-	quantidadeDeCds, err := strconv.Atoi(limpaQuantidadeCD)
-	if err != nil {
-		fmt.Println("O que você digitou não é um numero")
+	quantidadeCds := 0
+	for {
+		fmt.Println("Quantidade de CDs:")
+		quantidadeCD, _ := reader.ReadString('\n')
+		limpaQuantidadeCD := strings.TrimSpace(quantidadeCD)
+		quantidadeDeCds, err := strconv.Atoi(limpaQuantidadeCD)
+		if err != nil {
+			fmt.Println("O que você digitou não é um numero")
+			continue
+		}
+		quantidadeCds = quantidadeDeCds
+		break
 	}
 	fazTotal := 0
 	calculaMedia := 0
-	for i := 0; i < quantidadeDeCds; i++ {
+	for i := 0; i < quantidadeCds; i++ {
 		fmt.Println("Valor gasto no", i+1, "Cd:")
 		Valor, _ := reader.ReadString('\n')
 		limpaValor := strings.TrimSpace(Valor)
@@ -29,7 +34,7 @@ func main() {
 			fmt.Println("O que você digitou não é um numero")
 		}
 		fazTotal = fazTotal + valorCd
-		calculaMedia = fazTotal / quantidadeDeCds
+		calculaMedia = fazTotal / quantidadeCds
 
 	}
 	fmt.Println("valor médio gasto em cada um deles:", calculaMedia)

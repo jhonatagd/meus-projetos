@@ -32,6 +32,7 @@ func main() {
 		temperatura, err := strconv.Atoi(limpaTemperatura)
 		if err != nil {
 			fmt.Println("O que você digitou não é um numero")
+			continue
 		}
 		quantasVezesPercorreu = quantasVezesPercorreu + 1
 		somaTemperaturas = somaTemperaturas + temperatura

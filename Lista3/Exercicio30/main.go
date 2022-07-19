@@ -11,17 +11,22 @@ import (
 func main() {
 
 	reader := bufio.NewReader(os.Stdin)
-
-	fmt.Println("Quantidade de pães comprados:")
-	p, _ := reader.ReadString('\n')
-	limpaP := strings.TrimSpace(p)
-	quantidadePaes, err := strconv.ParseFloat(limpaP, 64)
-	if err != nil {
-		fmt.Println("O que você digitou não é um numero")
+	quantidadeDePaes := 0.0
+	for {
+		fmt.Println("Quantidade de pães comprados:")
+		p, _ := reader.ReadString('\n')
+		limpaP := strings.TrimSpace(p)
+		quantidadePaes, err := strconv.ParseFloat(limpaP, 64)
+		if err != nil {
+			fmt.Println("O que você digitou não é um numero")
+			continue
+		}
+		quantidadeDePaes = quantidadePaes
+		break
 	}
 
-	if quantidadePaes > 0 && quantidadePaes <= 50 {
-		fmt.Println(quantidadePaes, "Pães deu um total de:", quantidadePaes*0.18)
+	if quantidadeDePaes > 0 && quantidadeDePaes <= 50 {
+		fmt.Println(quantidadeDePaes, "Pães deu um total de:", quantidadeDePaes*0.18)
 	} else {
 		fmt.Println("Máximo de itens 50")
 	}

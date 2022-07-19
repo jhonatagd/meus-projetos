@@ -14,6 +14,7 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/lista/emcima", ListaEmCima).Methods("GET")
 	router.HandleFunc("/lista/aolado", ListaAoLado).Methods("GET")
+	router.HandleFunc("/lista/aolado", imprimi).Methods("GET")
 	router.HandleFunc("/imparoupar/{id}", ImparOuPar).Methods("GET")
 	router.HandleFunc("/imparoupar2", ImparOuPar2).Methods("GET")
 	router.HandleFunc("/imparoupar3", ImparOuPar3).Methods("POST")
@@ -51,6 +52,16 @@ func ImparOuPar(w http.ResponseWriter, r *http.Request) {
 }
 
 func ImparOuPar2(w http.ResponseWriter, r *http.Request) {
+	id := r.URL.Query().Get("Id")
+	convertInt, _ := strconv.Atoi(id)
+	if convertInt%2 == 0 {
+		json.NewEncoder(w).Encode("É par")
+	} else {
+		json.NewEncoder(w).Encode("É Impar")
+	}
+}
+
+func imprimi(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("Id")
 	convertInt, _ := strconv.Atoi(id)
 	if convertInt%2 == 0 {

@@ -18,21 +18,28 @@ func main() {
 		valorItem, err := strconv.ParseFloat(limpaI, 64)
 		if err != nil {
 			fmt.Println("O que você digitou não é um numero")
+			continue
 		} else if valorItem > 0 {
-			totalCompras = totalCompras + valorItem
+			totalCompras = valorItem
 		} else if valorItem == 0 {
 
 			// pede troco
-			fmt.Println("Dinheiro recebido:")
-			dinheiro, _ := reader.ReadString('\n')
-			limpaDinheiro := strings.TrimSpace(dinheiro)
-			pagamento, err := strconv.ParseFloat(limpaDinheiro, 64)
-			if err != nil {
-				fmt.Println("O que você digitou não é um numero")
+			pegaPagamento := 0.0
+			for {
+				fmt.Println("Dinheiro recebido:")
+				dinheiro, _ := reader.ReadString('\n')
+				limpaDinheiro := strings.TrimSpace(dinheiro)
+				pagamento, err := strconv.ParseFloat(limpaDinheiro, 64)
+				if err != nil {
+					fmt.Println("O que você digitou não é um numero")
+					continue
+				}
+				pegaPagamento = pagamento
+				break
 			}
-			troco := pagamento - totalCompras
+			troco := pegaPagamento - totalCompras
 			fmt.Println("Total de:", totalCompras)
-			fmt.Println("Dinheiro recebido:", pagamento)
+			fmt.Println("Dinheiro recebido:", pegaPagamento)
 			fmt.Println("troco de:", troco)
 		} else {
 			fmt.Println("Deseja encerrar? (S / N) ")

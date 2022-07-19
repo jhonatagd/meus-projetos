@@ -13,16 +13,22 @@ import (
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	//Errinho: Validação da entrada de dados. O código segue com o erro do usuário.
-	fmt.Println("N:")
-	termo, err := reader.ReadString('\n')
-	termo = strings.TrimSpace(termo)
-	n, err := strconv.Atoi(termo)
-	if err != nil {
-		fmt.Println("O que você digitou não é um número")
+	nesimoNumero := 0
+	for {
+		fmt.Println("N:")
+		termo, _ := reader.ReadString('\n')
+		termo = strings.TrimSpace(termo)
+		nesimo, err := strconv.Atoi(termo)
+		if err != nil {
+			fmt.Println("O que você digitou não é um número")
+			continue
+		}
+		nesimoNumero = nesimo
+		break
 	}
 	primeiro := 1
 	segundo := 1
-	for i := 0; i < n; i++ {
+	for i := 0; i < nesimoNumero; i++ {
 		if i == 0 {
 			fmt.Println(primeiro)
 		} else if i == 1 {

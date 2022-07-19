@@ -10,32 +10,45 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
+	atualizaNumeroAluno := 0
+	atualizaAlturaAluno := 0
 	alunoMaisAlto := 0
 	alunoMaisBaixo := 0
 	armazenaNumeroAluno := 0
 	for i := 0; i < 10; i++ {
+		for {
+			fmt.Println("Seu número como aluno:")
+			pegaNumero, _ := reader.ReadString('\n')
+			limpaNumero := strings.TrimSpace(pegaNumero)
+			numeroAluno, err := strconv.Atoi(limpaNumero)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+			atualizaNumeroAluno = numeroAluno
+			break
+		}
 
-		fmt.Println("Seu número como aluno:")
-		pegaNumero, _ := reader.ReadString('\n')
-		limpaNumero := strings.TrimSpace(pegaNumero)
-		numeroAluno, err := strconv.Atoi(limpaNumero)
-		if err != nil {
-			fmt.Println("O que você digitou não é um número")
+		for {
+			fmt.Println("Sua altura em centimetros:")
+			pegaAltura, _ := reader.ReadString('\n')
+			limpaAltura := strings.TrimSpace(pegaAltura)
+			alturaAluno, err := strconv.Atoi(limpaAltura)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+			atualizaAlturaAluno = alturaAluno
+			break
 		}
-		fmt.Println("Sua altura em centimetros:")
-		pegaAltura, _ := reader.ReadString('\n')
-		limpaAltura := strings.TrimSpace(pegaAltura)
-		alturaAluno, err := strconv.Atoi(limpaAltura)
-		if err != nil {
-			fmt.Println("O que você digitou não é um número")
+
+		if atualizaNumeroAluno > armazenaNumeroAluno && atualizaAlturaAluno > alunoMaisAlto {
+			armazenaNumeroAluno = armazenaNumeroAluno + atualizaNumeroAluno
+			alunoMaisAlto = alunoMaisAlto + atualizaAlturaAluno
 		}
-		if numeroAluno > armazenaNumeroAluno && alturaAluno > alunoMaisAlto {
-			armazenaNumeroAluno = armazenaNumeroAluno + numeroAluno
-			alunoMaisAlto = alunoMaisAlto + alturaAluno
-		}
-		if numeroAluno > armazenaNumeroAluno && alturaAluno > alunoMaisBaixo {
-			armazenaNumeroAluno = armazenaNumeroAluno + numeroAluno
-			alunoMaisBaixo = alunoMaisBaixo + alturaAluno
+		if atualizaNumeroAluno > armazenaNumeroAluno && atualizaAlturaAluno > alunoMaisBaixo {
+			armazenaNumeroAluno = armazenaNumeroAluno + atualizaAlturaAluno
+			alunoMaisBaixo = alunoMaisBaixo + atualizaAlturaAluno
 		}
 		fmt.Println("Codigo do aluno:", armazenaNumeroAluno)
 		fmt.Println("Mais alto:", alunoMaisAlto)

@@ -81,11 +81,38 @@ func main() {
 		}
 	}
 
-	anos := 0
-	if habitantesA1 > habitantesB2 {
-		taxA1 = ((habitantesA1 * taxA1) / 100)
-		taxB2 = ((habitantesB2 * taxB2) / 100)
-		anos = anos + 1.0
-		fmt.Println("Serão necessarios", anos, "anos para que a população do pais A ultrapasse ou iguale a população do Pais B")
+	if taxA1 == taxB2 {
+		fmt.Println("Cidades com a mesma taxa, são incalculaveis")
+		return
 	}
+
+	anos := 0
+	if taxA1 > taxB2 {
+		for {
+			anos = anos + 1.0
+			habitantesA1 = habitantesA1 + (habitantesA1 * taxA1)
+			habitantesB2 = habitantesB2 + (habitantesB2 * taxB2)
+			if habitantesA1 >= habitantesB2 {
+				fmt.Println("Serão necessarios", anos, "anos para que a população do pais A ultrapasse ou iguale a população do Pais B")
+				return
+			}
+			// return para a função, break e continue só para for
+		}
+	} else {
+		for {
+			anos = anos + 1.0
+			habitantesA1 = habitantesA1 + (habitantesA1 * taxA1)
+			habitantesB2 = habitantesB2 + (habitantesB2 * taxB2)
+			if habitantesB2 >= habitantesA1 {
+				fmt.Println("Serão necessarios", anos, "anos para que a população do pais A ultrapasse ou iguale a população do Pais B")
+				return
+			}
+		}
+	}
+
 }
+
+// Se a taxa da cidade A for maior, comparar sempre com a cidade A
+// Se a taxa da cidade B for maior, comparar sempre com a cidade B
+// Ideal é comparar por taxa!
+// Ficar atento quando as taxas forem iguais.

@@ -13,6 +13,7 @@ func main() {
 	respostaCerta := 0
 	respostaErrada := 0
 	quantidadeDeAlunos := 0
+	tantasRespostas := 0
 	gabarito := []string{"A", "B", "C", "D", "E", "E", "D", "C", "B", "A"}
 	for {
 		for i := 0; i < 10; i++ {
@@ -35,8 +36,10 @@ func main() {
 
 		if verifica == "S" {
 			quantidadeDeAlunos = quantidadeDeAlunos + 1
+			tantasRespostas := quantidadeDeAlunos + 10
 			continue
 		}
+		media := respostaCerta / re
 
 	}
 }

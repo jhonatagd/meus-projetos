@@ -11,22 +11,29 @@ import (
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Println("Verifica se é numero primo: ")
-	verifica, _ := reader.ReadString('\n')
-	limpaVerifica := strings.TrimSpace(verifica)
-	numero, err := strconv.Atoi(limpaVerifica)
-	if err != nil {
-		fmt.Println("O que você digitou não é um numero")
+	verificaNumero := 0
+	for {
+		fmt.Println("Verifica se é numero primo: ")
+		verifica, _ := reader.ReadString('\n')
+		limpaVerifica := strings.TrimSpace(verifica)
+		numero, err := strconv.Atoi(limpaVerifica)
+		if err != nil {
+			fmt.Println("O que você digitou não é um numero")
+			continue
+		}
+		verificaNumero = numero
+		break
 	}
+
 	//Altere o programa de cálculo dos números primos, informando,
 	//caso o número não seja primo, por quais número ele é divisível.
 
-	if numero == 2 {
+	if verificaNumero == 2 {
 		fmt.Println("é primo")
 		//	return
 	}
 
-	verificaPar := numero % 2
+	verificaPar := verificaNumero % 2
 	if verificaPar == 0 {
 		fmt.Println("Nâo é primo")
 		//	return
@@ -39,8 +46,8 @@ func main() {
 
 	var divisores []int
 	// slice : slice não tem um tamanho fixo, array tem
-	for i := 1; i < numero; i++ {
-		testeDv := numero % i
+	for i := 1; i < verificaNumero; i++ {
+		testeDv := verificaNumero % i
 		if testeDv == 0 {
 			divisores = append(divisores, i)
 		}
@@ -51,6 +58,6 @@ func main() {
 		return
 	}
 
-	fmt.Println("Divisores de ", numero, ":", divisores)
+	fmt.Println("Divisores de ", verificaNumero, ":", divisores)
 
 }

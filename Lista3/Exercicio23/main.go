@@ -10,26 +10,31 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
-	fmt.Println("Mostrar numeros primos de 1 a :")
-	verifica, _ := reader.ReadString('\n')
-	limpaVerifica := strings.TrimSpace(verifica)
-	n, err := strconv.Atoi(limpaVerifica)
-	if err != nil {
-		fmt.Println("O que você digitou não é um numero")
+	numerosPrims := 0
+	for {
+		fmt.Println("Mostrar numeros primos de 1 a :")
+		verifica, _ := reader.ReadString('\n')
+		limpaVerifica := strings.TrimSpace(verifica)
+		numerosPrimos, err := strconv.Atoi(limpaVerifica)
+		if err != nil {
+			fmt.Println("O que você digitou não é um numero")
+			continue
+		}
+		numerosPrims = numerosPrimos
+		break
 	}
 	numeroDeDivsoes := 0
-	for i := 0; i < n; i++ {
+	for i := 0; i < numerosPrims; i++ {
 
-		if n == 2 {
+		if numerosPrims == 2 {
 			fmt.Println("é primo")
 			numeroDeDivsoes = numeroDeDivsoes + 1
 		}
-		verificaPar := n % 2
+		verificaPar := numerosPrims % 2
 		if verificaPar == 0 {
 			fmt.Println("Nâo é primo")
 		}
-		numeroString := strconv.Itoa(n)
+		numeroString := strconv.Itoa(numerosPrims)
 		soma := 0
 		for i := 0; i < len(numeroString); i++ {
 			test, _ := strconv.Atoi(string(numeroString[i]))

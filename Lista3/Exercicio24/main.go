@@ -11,15 +11,21 @@ import (
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	somaValores := 0
-	fmt.Println("Numero de notas que deseja calcular:")
-	n, _ := reader.ReadString('\n')
-	limpaN := strings.TrimSpace(n)
-	nNumeros, err := strconv.Atoi(limpaN)
-	if err != nil {
-		fmt.Println("O que você digitou não é um número")
+	numerosDeNotas := 0
+	for {
+		fmt.Println("Numero de notas que deseja calcular:")
+		n, _ := reader.ReadString('\n')
+		limpaN := strings.TrimSpace(n)
+		nNumeros, err := strconv.Atoi(limpaN)
+		if err != nil {
+			fmt.Println("O que você digitou não é um número")
+			continue
+		}
+		numerosDeNotas = nNumeros
+		break
 	}
 
-	for i := 0; i < nNumeros; i++ {
+	for i := 0; i < numerosDeNotas; i++ {
 		fmt.Println("Digitar o ", i+1, "° numero:")
 		nUm, _ := reader.ReadString('\n')
 		limpaNUm := strings.TrimSpace(nUm)
@@ -37,7 +43,7 @@ func main() {
 			}
 		}
 	}
-	media := somaValores / nNumeros
+	media := somaValores / numerosDeNotas
 	// Faça um programa que calcule o mostre a média aritmética de N notas.
 	fmt.Println("Media aritmética:", media)
 

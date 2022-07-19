@@ -14,6 +14,9 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
+	atualizaCodigo := 0
+	atualizaAltura := 0
+	atualizaPeso := 0
 	guardaMaisAlto := 0
 	guardaCodigoMaisAlto := 0
 	guardaMaisBaixo := 2147483647
@@ -26,53 +29,73 @@ func main() {
 	mediaPeso := 0
 	divisor := 0
 	for {
-		fmt.Println("Seu codigo:")
-		pegaCodigo, _ := reader.ReadString('\n')
-		limpaCodigo := strings.TrimSpace(pegaCodigo)
-		codigo, err := strconv.Atoi(limpaCodigo)
-		if err != nil {
-			fmt.Println("O que você digitou não é um numero")
-		} else if codigo == 0 {
-			fmt.Println("Codigo encerrado.")
+
+		for {
+			fmt.Println("Seu codigo:")
+			pegaCodigo, _ := reader.ReadString('\n')
+			limpaCodigo := strings.TrimSpace(pegaCodigo)
+			codigo, err := strconv.Atoi(limpaCodigo)
+			if err != nil {
+				fmt.Println("O que você digitou não é um numero")
+				continue
+			}
+			atualizaCodigo = codigo
 			break
 		}
-		fmt.Println("Sua altura:")
-		pegaAltura, _ := reader.ReadString('\n')
-		limpaAltura := strings.TrimSpace(pegaAltura)
-		altura, err := strconv.Atoi(limpaAltura)
-		if err != nil {
-			fmt.Println("O que você digitou não é um numero")
+		if atualizaCodigo == 0 {
+			break
 		}
-		fmt.Println("Seu Peso:")
-		pegaPeso, _ := reader.ReadString('\n')
-		limpaPeso := strings.TrimSpace(pegaPeso)
-		peso, err := strconv.Atoi(limpaPeso)
-		if err != nil {
-			fmt.Println("O que você digitou não é um numero")
-		}
-		divisor = divisor + 1
-		mediaAltura = (mediaAltura + altura) / divisor
-		mediaPeso = (mediaPeso + peso) / divisor
 
-		if altura > guardaMaisAlto {
-			guardaMaisAlto = altura
-			guardaCodigoMaisAlto = codigo
+		for {
+			fmt.Println("Sua altura:")
+			pegaAltura, _ := reader.ReadString('\n')
+			limpaAltura := strings.TrimSpace(pegaAltura)
+			altura, err := strconv.Atoi(limpaAltura)
+			if err != nil {
+				fmt.Println("O que você digitou não é um numero")
+				continue
+			}
+			atualizaAltura = altura
+			break
 		}
-		if peso > guardaMaisGordinho {
-			guardaMaisGordinho = peso
-			guardaCodigoMaisGordinho = codigo
+
+		for {
+			fmt.Println("Seu Peso:")
+			pegaPeso, _ := reader.ReadString('\n')
+			limpaPeso := strings.TrimSpace(pegaPeso)
+			peso, err := strconv.Atoi(limpaPeso)
+			if err != nil {
+				fmt.Println("O que você digitou não é um numero")
+				continue
+			}
+			atualizaPeso = peso
+			break
 		}
-		if altura < guardaMaisBaixo {
-			guardaMaisBaixo = altura
-			guardaCodigoMaisBaixo = codigo
+
+		divisor = divisor + 1
+		mediaAltura = (mediaAltura + atualizaAltura) / divisor
+		mediaPeso = (mediaPeso + atualizaPeso) / divisor
+
+		if atualizaAltura > guardaMaisAlto {
+			guardaMaisAlto = atualizaAltura
+			guardaCodigoMaisAlto = atualizaCodigo
 		}
-		if peso < guardaMaisMagro {
-			guardaMaisMagro = peso
-			guardaCodigoMaisMagro = codigo
+		if atualizaPeso > guardaMaisGordinho {
+			guardaMaisGordinho = atualizaPeso
+			guardaCodigoMaisGordinho = atualizaCodigo
+		}
+		if atualizaAltura < guardaMaisBaixo {
+			guardaMaisBaixo = atualizaAltura
+			guardaCodigoMaisBaixo = atualizaCodigo
+		}
+		if atualizaPeso < guardaMaisMagro {
+			guardaMaisMagro = atualizaPeso
+			guardaCodigoMaisMagro = atualizaCodigo
 
 		}
 
 	}
+
 	fmt.Println("Codigo do mais baixo:", guardaCodigoMaisBaixo, ", altura:", guardaMaisBaixo)
 	fmt.Println("Codigo do mais alto:", guardaCodigoMaisAlto, ", altura:", guardaMaisAlto)
 	fmt.Println("Codigo do mais magro:", guardaCodigoMaisMagro, ", peso:", guardaMaisMagro)

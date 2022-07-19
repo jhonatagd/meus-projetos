@@ -10,7 +10,8 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	pegaCalculaFatorial := 0
+	// Errinho de validação na entrada do usuário
+	calculaFat := 0
 	for {
 		fmt.Println("calcular o fatorial do numero:")
 		calcula, _ := reader.ReadString('\n')
@@ -20,15 +21,15 @@ func main() {
 			fmt.Println("O que você digitou não é um número")
 			continue
 		}
-		pegaCalculaFatorial = calculaFatorial
+		calculaFat = calculaFatorial
 		break
 	}
+
 	fatorial := 1
-	for i := pegaCalculaFatorial; i >= 1; i-- {
+	for i := calculaFat; i >= 1; i-- {
 		fatorial = fatorial * i
-		fmt.Print(pegaCalculaFatorial, ".")
-		pegaCalculaFatorial = pegaCalculaFatorial - 1
 	}
 	fmt.Println(fatorial)
 
-}
+} // Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário.
+// Ex.: 5!=5.4.3.2.1=120
