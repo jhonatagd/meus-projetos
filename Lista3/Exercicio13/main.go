@@ -24,6 +24,7 @@ func main() {
 		base, err := strconv.Atoi(limpaBase)
 		if err != nil {
 			fmt.Println("O que você digitou não é um número")
+			continue
 		}
 		nB = base
 		break
