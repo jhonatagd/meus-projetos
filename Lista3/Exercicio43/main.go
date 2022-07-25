@@ -17,23 +17,35 @@ func main() {
 	valorPorItemHambúrguer := 0.0
 	valorPorItemCheeseburguer := 0.0
 	valorPorItemRefrigerante := 0.0
-
+	atualizaCodigo := 0.0
+	atualizaQuantidadeDeItens := 0.0
 	for {
+		for {
+			fmt.Println("Codigo do produto:  - Digite 0 para finalizar pedido")
+			pegaCodigo, _ := reader.ReadString('\n')
+			limpaCodigo := strings.TrimSpace(pegaCodigo)
+			codigo, err := strconv.ParseFloat(limpaCodigo, 64)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+			atualizaCodigo = codigo
+			break
+		}
 
-		fmt.Println("Codigo do produto:  - Digite 0 para finalizar pedido")
-		pegaCodigo, _ := reader.ReadString('\n')
-		limpaCodigo := strings.TrimSpace(pegaCodigo)
-		codigo, err := strconv.ParseFloat(limpaCodigo, 64)
-		if err != nil {
-			fmt.Println("O que você digitou não é um número")
+		for {
+			fmt.Println("Quantidade de itens comprado:")
+			pegaItens, _ := reader.ReadString('\n')
+			limpaItem := strings.TrimSpace(pegaItens)
+			quantidadeDeItens, err := strconv.ParseFloat(limpaItem, 64)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+			atualizaQuantidadeDeItens = quantidadeDeItens
+			break
 		}
-		fmt.Println("Quantidade de itens comprado:")
-		pegaItens, _ := reader.ReadString('\n')
-		limpaItem := strings.TrimSpace(pegaItens)
-		quantidadeDeItens, err := strconv.ParseFloat(limpaItem, 64)
-		if err != nil {
-			fmt.Println("O que você digitou não é um número")
-		}
+
 		cachorroQuente := 100.00
 		bauruSimples := 101.00
 		bauruComOvo := 102.00
@@ -41,32 +53,32 @@ func main() {
 		cheeseburguer := 104.00
 		refrigerante := 105.00
 
-		if codigo == cachorroQuente {
-			somaCompra = somaCompra + (quantidadeDeItens * 1.20)
-			valorPorItemCachorroQuente = valorPorItemCachorroQuente + quantidadeDeItens
+		if atualizaCodigo == cachorroQuente {
+			somaCompra = somaCompra + (atualizaQuantidadeDeItens * 1.20)
+			valorPorItemCachorroQuente = valorPorItemCachorroQuente + atualizaQuantidadeDeItens
 		}
-		if codigo == bauruSimples {
-			somaCompra = somaCompra + (quantidadeDeItens * 1.30)
-			valorPorItemBauruSimples = valorPorItemBauruSimples + quantidadeDeItens
+		if atualizaCodigo == bauruSimples {
+			somaCompra = somaCompra + (atualizaQuantidadeDeItens * 1.30)
+			valorPorItemBauruSimples = valorPorItemBauruSimples + atualizaQuantidadeDeItens
 		}
-		if codigo == bauruComOvo {
-			somaCompra = somaCompra + (quantidadeDeItens * 1.50)
-			valorPorItemBauruComOvo = valorPorItemBauruComOvo + quantidadeDeItens
+		if atualizaCodigo == bauruComOvo {
+			somaCompra = somaCompra + (atualizaQuantidadeDeItens * 1.50)
+			valorPorItemBauruComOvo = valorPorItemBauruComOvo + atualizaQuantidadeDeItens
 		}
-		if codigo == hambúrguer {
-			somaCompra = somaCompra + (quantidadeDeItens * 1.20)
-			valorPorItemHambúrguer = valorPorItemHambúrguer + quantidadeDeItens
+		if atualizaCodigo == hambúrguer {
+			somaCompra = somaCompra + (atualizaQuantidadeDeItens * 1.20)
+			valorPorItemHambúrguer = valorPorItemHambúrguer + atualizaQuantidadeDeItens
 		}
-		if codigo == cheeseburguer {
-			somaCompra = somaCompra + (quantidadeDeItens * 1.30)
-			valorPorItemCheeseburguer = valorPorItemCheeseburguer + quantidadeDeItens
+		if atualizaCodigo == cheeseburguer {
+			somaCompra = somaCompra + (atualizaQuantidadeDeItens * 1.30)
+			valorPorItemCheeseburguer = valorPorItemCheeseburguer + atualizaQuantidadeDeItens
 		}
-		if codigo == refrigerante {
-			somaCompra = somaCompra + (quantidadeDeItens * 1.00)
-			valorPorItemRefrigerante = valorPorItemRefrigerante + quantidadeDeItens
+		if atualizaCodigo == refrigerante {
+			somaCompra = somaCompra + (atualizaQuantidadeDeItens * 1.00)
+			valorPorItemRefrigerante = valorPorItemRefrigerante + atualizaQuantidadeDeItens
 		}
 
-		if codigo == 0 {
+		if atualizaCodigo == 0 {
 			fmt.Println("Valor a ser pago pelo item:")
 			fmt.Println("Cachorro Quente:", valorPorItemCachorroQuente)
 			fmt.Println("Bauru Simples:", valorPorItemBauruSimples)

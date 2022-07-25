@@ -13,24 +13,29 @@ import (
 // quantidade de parcelas e valor da parcela.
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
-	fmt.Println("Valor da sua divida:")
-	pegaDivida, _ := reader.ReadString('\n')
-	limpaDivida := strings.TrimSpace(pegaDivida)
-	divida, err := strconv.Atoi(limpaDivida)
-	if err != nil {
-		fmt.Println("O que você digitou não é um número")
+	atualizaDivida := 0
+	for {
+		fmt.Println("Valor da sua divida:")
+		pegaDivida, _ := reader.ReadString('\n')
+		limpaDivida := strings.TrimSpace(pegaDivida)
+		divida, err := strconv.Atoi(limpaDivida)
+		if err != nil {
+			fmt.Println("O que você digitou não é um número")
+			continue
+		}
+		atualizaDivida = divida
+		break
 	}
-	juros10 := divida / 100 * 10
-	juros15 := divida / 100 * 15
-	juros20 := divida / 100 * 20
-	juros25 := divida / 100 * 25
+	juros10 := atualizaDivida / 100 * 10
+	juros15 := atualizaDivida / 100 * 15
+	juros20 := atualizaDivida / 100 * 20
+	juros25 := atualizaDivida / 100 * 25
 	fmt.Println("Valor da Dívida    Valor dos Juros    Quantidade de Parcelas     Valor da Parcela")
-	fmt.Println(divida, 0, "1", divida)
-	fmt.Println(divida, juros10, "3", (divida+juros10)/3)
-	fmt.Println(divida, juros15, "6", (divida+juros15)/6)
-	fmt.Println(divida, juros20, "9", (divida+juros20)/9)
-	fmt.Println(divida, juros25, "12", (divida+juros25)/12)
+	fmt.Println(atualizaDivida, 0, "1", atualizaDivida)
+	fmt.Println(atualizaDivida, juros10, "3", (atualizaDivida+juros10)/3)
+	fmt.Println(atualizaDivida, juros15, "6", (atualizaDivida+juros15)/6)
+	fmt.Println(atualizaDivida, juros20, "9", (atualizaDivida+juros20)/9)
+	fmt.Println(atualizaDivida, juros25, "12", (atualizaDivida+juros25)/12)
 	//Quantidade de Parcelas  % de Juros sobre o valor inicial da dívida
 	//1       0
 	//3       10

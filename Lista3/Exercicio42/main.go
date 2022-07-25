@@ -12,21 +12,26 @@ import (
 // [0-25], [26-50], [51-75] e [76-100]. A entrada de dados deverá terminar quando for lido um número negativo.
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
+	atualizaXNumerosPositivos := 0
 	entre0E25 := 0
 	entre26E50 := 0
 	entre51E75 := 0
 	entre76E100 := 0
+	for {
 
-	fmt.Println("Quantos numeros positivos deseja verificar?")
-	numeros, _ := reader.ReadString('\n')
-	limpaNumeros := strings.TrimSpace(numeros)
-	xNumerosPositivos, err := strconv.Atoi(limpaNumeros)
-	if err != nil {
-		fmt.Println("O que você digitou não é um número")
+		fmt.Println("Quantos numeros positivos deseja verificar?")
+		numeros, _ := reader.ReadString('\n')
+		limpaNumeros := strings.TrimSpace(numeros)
+		xNumerosPositivos, err := strconv.Atoi(limpaNumeros)
+		if err != nil {
+			fmt.Println("O que você digitou não é um número")
+			continue
+		}
+		atualizaXNumerosPositivos = xNumerosPositivos
+		break
 	}
 	test := 0
-	for i := 0; i < xNumerosPositivos; i++ {
+	for i := 0; i < atualizaXNumerosPositivos; i++ {
 
 		fmt.Println(test+1, "° Numero")
 		pegaNumero, _ := reader.ReadString('\n')

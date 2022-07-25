@@ -26,7 +26,7 @@ func ListaEmCima(w http.ResponseWriter, r *http.Request) {
 
 	for i := 1; i <= 20; i++ {
 		resultado += fmt.Sprintln(i)
-	}
+
 
 	json.NewEncoder(w).Encode(resultado)
 }

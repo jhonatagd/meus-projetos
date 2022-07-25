@@ -10,7 +10,9 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
+	atualizaNumeroVeiculosDePasseio := 0
+	atualizaNumeroDeAcidentes := 0
+	atualizaCodigoDaCidade := 0
 	armazenaMenoresAcidentes := 0
 	armazenaMaioresAcidentes := 0
 	cidadeMenorAcidente := 0
@@ -19,50 +21,67 @@ func main() {
 	mediaVeiculos := 0
 	mediaTotal := 0
 	for i := 0; i < 5; i++ {
+		for {
+			fmt.Println("Codigo da cidade:")
+			pegaCodigo, _ := reader.ReadString('\n')
+			limpaCodigo := strings.TrimSpace(pegaCodigo)
+			codigoCidade, err := strconv.Atoi(limpaCodigo)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+			atualizaCodigoDaCidade = codigoCidade
+			break
+		}
 
-		fmt.Println("Codigo da cidade:")
-		pegaCodigo, _ := reader.ReadString('\n')
-		limpaCodigo := strings.TrimSpace(pegaCodigo)
-		codigoCidade, err := strconv.Atoi(limpaCodigo)
-		if err != nil {
-			fmt.Println("O que você digitou não é um número")
+		for {
+			fmt.Println("Número de veículos de passeio (em 1999);")
+			numeroVeiculos, _ := reader.ReadString('\n')
+			limpaVeiculos := strings.TrimSpace(numeroVeiculos)
+			numeroVeiculosDePasseio, err := strconv.Atoi(limpaVeiculos)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+			atualizaNumeroVeiculosDePasseio = numeroVeiculosDePasseio
+			break
 		}
-		fmt.Println("Número de veículos de passeio (em 1999);")
-		numeroVeiculos, _ := reader.ReadString('\n')
-		limpaVeiculos := strings.TrimSpace(numeroVeiculos)
-		numeroVeiculosDePasseio, err := strconv.Atoi(limpaVeiculos)
-		if err != nil {
-			fmt.Println("O que você digitou não é um número")
+
+		for {
+			fmt.Println("Número de acidentes de trânsito com vítimas (em 1999);")
+			numeroAcidentes, _ := reader.ReadString('\n')
+			limpaAcidentes := strings.TrimSpace(numeroAcidentes)
+			numeroDeAcidentes, err := strconv.Atoi(limpaAcidentes)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+			atualizaNumeroDeAcidentes = numeroDeAcidentes
+			break
 		}
-		fmt.Println("Número de acidentes de trânsito com vítimas (em 1999);")
-		numeroAcidentes, _ := reader.ReadString('\n')
-		limpaAcidentes := strings.TrimSpace(numeroAcidentes)
-		numeroDeAcidentes, err := strconv.Atoi(limpaAcidentes)
-		if err != nil {
-			fmt.Println("O que você digitou não é um número")
-		}
-		mediaVeiculos = mediaVeiculos + numeroVeiculosDePasseio
+
+		mediaVeiculos = mediaVeiculos + atualizaNumeroVeiculosDePasseio
 
 		if i == 0 {
-			armazenaMenoresAcidentes = numeroDeAcidentes
-			armazenaMaioresAcidentes = numeroDeAcidentes
-			cidadeMenorAcidente = codigoCidade
-			cidadeMaiorAcidente = codigoCidade
+			armazenaMenoresAcidentes = atualizaNumeroDeAcidentes
+			armazenaMaioresAcidentes = atualizaNumeroDeAcidentes
+			cidadeMenorAcidente = atualizaCodigoDaCidade
+			cidadeMaiorAcidente = atualizaCodigoDaCidade
 
 		} else {
-			if numeroDeAcidentes < armazenaMenoresAcidentes {
-				armazenaMenoresAcidentes = numeroDeAcidentes
-				cidadeMenorAcidente = codigoCidade
+			if atualizaNumeroDeAcidentes < armazenaMenoresAcidentes {
+				armazenaMenoresAcidentes = atualizaNumeroDeAcidentes
+				cidadeMenorAcidente = atualizaCodigoDaCidade
 			}
-			if numeroDeAcidentes > armazenaMaioresAcidentes {
-				armazenaMaioresAcidentes = numeroDeAcidentes
-				cidadeMaiorAcidente = codigoCidade
+			if atualizaNumeroDeAcidentes > armazenaMaioresAcidentes {
+				armazenaMaioresAcidentes = atualizaNumeroDeAcidentes
+				cidadeMaiorAcidente = atualizaCodigoDaCidade
 			}
 		}
 
-		if numeroVeiculosDePasseio < 2.000 {
+		if atualizaNumeroVeiculosDePasseio < 2.000 {
 			divisor = divisor + 1
-			mediaTotal = mediaTotal + numeroDeAcidentes
+			mediaTotal = mediaTotal + atualizaNumeroDeAcidentes
 		}
 
 	}

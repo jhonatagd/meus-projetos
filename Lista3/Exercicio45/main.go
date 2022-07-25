@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -14,6 +15,8 @@ func main() {
 	respostaErrada := 0
 	quantidadeDeAlunos := 0
 	tantasRespostas := 0
+	maiorAcertos := 0
+	menorAcertos := 0
 	gabarito := []string{"A", "B", "C", "D", "E", "E", "D", "C", "B", "A"}
 	for {
 		for i := 0; i < 10; i++ {
@@ -24,22 +27,32 @@ func main() {
 
 			if nota == gabarito[i] {
 				respostaCerta = respostaCerta + 1
+				maiorAcertos = maiorAcertos + 1
 			} else {
 				respostaErrada = respostaErrada + 1
+				menorAcertos = menorAcertos + 1
 			}
-
+		 
 		}
+		if maiorAcertos > 
 
-		fmt.Printf("Deseja verificar as respostas de novo? (S para sim e N para não)")
-		pegaVerifica, _ := reader.ReadString('\n')
-		verifica := strings.TrimSpace(pegaVerifica)
-
-		if verifica == "S" {
+		fmt.Println("Deseja verificar mais uma vez? 1- Sim / 2- Não")
+			pegaVerifica, _ := reader.ReadString('\n')
+			limpaVerifica := strings.TrimSpace(pegaVerifica)
+			verifica, err := strconv.Atoi(limpaVerifica)
+			if err != nil {
+				fmt.Println("O que você digitou não é um número")
+				continue
+			}
+		if verifica == 1 {
 			quantidadeDeAlunos = quantidadeDeAlunos + 1
-			tantasRespostas := quantidadeDeAlunos + 10
+			tantasRespostas = quantidadeDeAlunos + 10
 			continue
 		}
-		media := respostaCerta / re
+		media := tantasRespostas / quantidadeDeAlunos
+		fmt.Println("Maior e Menor Acerto;")
+		fmt.Println("Total de Alunos que utilizaram o sistema:", quantidadeDeAlunos)
+		fmt.Println("A Média das Notas da Turma:", media)
 
 	}
 }
