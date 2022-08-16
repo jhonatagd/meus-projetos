@@ -23,37 +23,66 @@ func main() {
 	nomeAtleta := "0"
 	for {
 		fmt.Println("Nome do atleta:")
-		pegaNome, _ := reader.ReadString('\n')
-		limpaNomes := strings.TrimSpace(pegaNome)
-		PegaNomeAtleta, err := strconv.Atoi(limpaNomes)
+		pegaLetra, err := reader.ReadString('\n')
+		pegaLetraString := strings.TrimSpace(pegaLetra)
+		pegaLetraString = strings.ToUpper(pegaLetraString)
 		if err != nil {
-			fmt.Println("O que você digitou não é um número")
+			fmt.Println("O que você digitou não é uma letra")
 			continue
 		}
-		nomeAtleta = PegaNomeAtleta
+		nomeAtleta = pegaLetraString
+		break
 	}
 
-	mediaDeSalto := 0
-	maiorSalto := 0
-	menorSalto := 0
+	var listaFloat [5]float64
 
-	for i := 0; i < 5; i++ {
-		contaSalto := 0
-		distanciaSaltos := 0
+	for i := 0; i < 5; i++ { // {}, {}, {}, {}{}, {}
+
 		for {
-			fmt.Printf("Distancia do v% salto:", contaSalto+1)
+			fmt.Println("Distancia do", i+1, "salto:")
 			pegaSalto, _ := reader.ReadString('\n')
 			limpaSalto := strings.TrimSpace(pegaSalto)
-			distanciaSalto, err := strconv.Atoi(limpaSalto)
+			distanciaSalto, err := strconv.ParseFloat(limpaSalto, 64)
 			if err != nil {
 				fmt.Println("O que você digitou não é um número")
+				i = i - 1
 				continue
 			}
-			distanciaSaltos = distanciaSalto
-		}
-		if distanciaSaltos > maiorSalto {
-			maiorSalto = distanciaSaltos
+			listaFloat[i] = distanciaSalto
+			break
 		}
 
 	}
+	fmt.Println("Atleta:", nomeAtleta)
+
+	for i := 0; i < 5; i++ {
+		fmt.Println(i+1, "° salto", listaFloat[i])
+	}
+
+	melhorSalto := 0.0
+	piorSalto := 0.0
+	for i := 0; i < 5; i++ {
+		if i == 0 {
+			melhorSalto = listaFloat[i]
+			piorSalto = listaFloat[i]
+		} else {
+			if listaFloat[i] > melhorSalto {
+				melhorSalto = listaFloat[i]
+			}
+			if listaFloat[i] < piorSalto {
+				piorSalto = listaFloat[i]
+			}
+		}
+	}
+	fmt.Println("Pior salto:", piorSalto)
+	fmt.Println("Melhor Salto:", melhorSalto)
+	totalSaltos := 0.0
+	for i := 0; i < 5; i++ {
+		totalSaltos = totalSaltos + listaFloat[i]
+
+	}
+	media := (totalSaltos - (melhorSalto + piorSalto)) / 3
+
+	fmt.Println("Média dos demais saltos:", media)
+
 }
