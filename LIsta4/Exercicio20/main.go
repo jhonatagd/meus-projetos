@@ -33,7 +33,7 @@ func main() {
 			listaAbono = append(listaAbono, 100)
 			valorMinimoAbono += 1
 		} else {
-			descobrePorcentagem := ((20 / 100) * listaSalario[i])
+			descobrePorcentagem := ((20 * listaSalario[i]) / 100)
 			listaAbono = append(listaAbono, listaSalario[i]+descobrePorcentagem)
 		}
 	}
@@ -43,10 +43,17 @@ func main() {
 	for i := 0; i < quantidadeDeSalario; i++ {
 		totalAbono = totalAbono + listaAbono[i]
 	}
+	maiorAbono := 0
+	for i := 0; i < quantidadeDeSalario; i++ {
+		if listaAbono[i] > 0 {
+			maiorAbono = listaAbono[i]
+		}
+	}
 
 	fmt.Println("Salarios:", listaSalario)
 	fmt.Print("Abono:", listaAbono)
 	fmt.Println("Foram processados", quantidadeDeSalario, "colaboradores")
+	fmt.Println("Valor mínimo pago a", valorMinimoAbono, "colaboradores")
 	fmt.Println("Total gasto com abonos:", totalAbono)
-	fmt.Println("Total gasto com abonos:", totalAbono)
+	fmt.Println("Maior valor de abono pago:", maiorAbono)
 }
